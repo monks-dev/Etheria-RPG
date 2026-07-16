@@ -1,11 +1,12 @@
 from Weapon import Weapon
 from Shield import Shield
 from Armour import Armour
-
+from enum import Enum, auto
 
 class EquipmentSlot(Enum):
     MAIN_HAND = auto()
     OFF_HAND = auto()
+    TWO_HAND = auto()
 
     HEAD = auto()
     CHEST = auto()

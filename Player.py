@@ -1,6 +1,8 @@
 from Inventory import Inventory
-from Equipment import Equipment
-
+from Equipment import Equipment, EquipmentSlot
+from Weapon import Weapon
+from Shield import Shield
+from Armour import Armour
 
 class Player:
     def __init__(self, name: str):
@@ -14,5 +16,5 @@ class Player:
         self.inventory = Inventory()
         self.equipment = Equipment()
         
-        self.inventory.add_item(self.weapon)
-        self.inventory.add_item(self.armour)
+        self.equipment.main_hand = Weapon("Iron Sword", "Basic Sword", 10, 3)
+        self.equipment.chest = Armour("Leather Chestplate", "Leather", 10, 5)
