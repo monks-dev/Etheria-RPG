@@ -51,6 +51,3 @@ def main_menu():
 
 def print_player_stats(player: Player):
     pass
-
-
-#main_menu()
