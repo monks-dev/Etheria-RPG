@@ -4,10 +4,6 @@ import os, time
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-running = True
-
-player = Player(input("What would you like your name to be : "))
-
 def view_inventory():
     pass
 
@@ -18,36 +14,45 @@ menu_actions = {
     "1": view_inventory,
     "2": exit_game
 }
-clear_screen()
-while running:
-    
+
+def display_equipment(player: Player):
+    print(("-" * 10 ) + "Equipment" + ("-" * 10 ))
+    for equipment in player.equipment.get_equipment():
+        if equipment == None:
+            continue
+        print(equipment)
+
+
+def display_main_menu(player: Player):
     print(("-" * 10 ) + " Etheria " + ("-" * 10 ))
     print(("=" * 29 ))
     print(f"Name : {player.name}")
     print(f"Health : {player.health}/{player.max_health}")
     print(f"Level : {player.level} - Xp : {player.xp}")
     print(f"Gold : {player.gold}")
-    print(f"Weapon : {player.equipment.main_hand} - Attack : {player.equipment.main_hand.attack}")
-    print(f"Armour : {player.equipment.chest} - Defense : {player.equipment.chest.defense}")
+    print(("=" * 29 ))
+    
+    display_equipment(player)
+
     print(("=" * 29 ))
     print(("-" * 29 ))
     print("[1] - View Inventory ")
     print("[2] - Exit")
-    
-    option = input("[Choice] > ").strip()
-    action = menu_actions.get(option)
-    if action:
-        action()
-    else:
-        clear_screen()
-        print(f"\nInvalid choice {option}. Please try again !")
-
 
 def main_menu():
-    print(("-" * 10 ) + " Etheria " + ("-" * 10 ))
+    running = True
+    player = Player(input("What would you like your name to be: "))
 
-    print_player_stats(player)
-    print_options()
+    while running:
+        clear_screen()
+        display_main_menu(player)
 
-def print_player_stats(player: Player):
-    pass
+        option = input("[Choice] > ").strip()
+        if option not in menu_actions:
+            input(f"Invalid choice '{option}'. Press Enter to continue.")
+            continue
+
+        menu_actions[option]()
+
+if __name__ == "__main__":
+    main_menu()

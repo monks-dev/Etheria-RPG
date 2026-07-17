@@ -20,17 +20,20 @@ class EquipmentSlot(Enum):
 class Equipment:
     def __init__(self):
 
-        self.main_hand: Weapon | None = None
-        self.off_hand: Weapon | Shield | None = None
+        self.main_hand: Weapon  = None
+        self.off_hand: Weapon | Shield  = None
 
-        self.head: Armour | None = None
-        self.chest: Armour | None = None
-        self.legs: Armour | None = None
-        self.boots: Armour | None = None
+        self.head: Armour  = None
+        self.chest: Armour  = None
+        self.legs: Armour  = None
+        self.boots: Armour  = None
 
-        self.ring: Armour | None = None
-        self.necklace: Armour | None = None
+        self.ring: Armour  = None
+        self.necklace: Armour  = None
 
-    
+
+    def get_equipment(self) -> tuple:
+        return (self.main_hand, self.off_hand, self.head, self.chest, self.legs, self.boots, self.ring, self.necklace)
+
     def equip_item(item: Weapon | Shield | Armour, slot: EquipmentSlot):
         pass
