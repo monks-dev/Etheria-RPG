@@ -1,4 +1,5 @@
-from Player import Player
+from Player.Player import Player
+from Menus.MainMenu import MainMenu
 import os, time
 
 def clear_screen():
@@ -23,9 +24,9 @@ def display_equipment(player: Player):
         print(equipment)
 
 
-def display_main_menu(player: Player):
-    print(("-" * 10 ) + " Etheria " + ("-" * 10 ))
+def display_player_stats(player: Player):
     print(("=" * 29 ))
+    print(("-" * 8 ) + " Player Info " + ("-" * 8 ))
     print(f"Name : {player.name}")
     print(f"Health : {player.health}/{player.max_health}")
     print(f"Level : {player.level} - Xp : {player.xp}")
@@ -35,24 +36,34 @@ def display_main_menu(player: Player):
     display_equipment(player)
 
     print(("=" * 29 ))
-    print(("-" * 29 ))
-    print("[1] - View Inventory ")
-    print("[2] - Exit")
 
 def main_menu():
     running = True
     player = Player(input("What would you like your name to be: "))
 
+    menu = MainMenu()
+
     while running:
         clear_screen()
-        display_main_menu(player)
+        display_player_stats(player)
+        menu.display()
 
-        option = input("[Choice] > ").strip()
-        if option not in menu_actions:
-            input(f"Invalid choice '{option}'. Press Enter to continue.")
-            continue
 
-        menu_actions[option]()
+        choice = menu.get_choice()
+
+        if choice == "1":
+            print("Inventory Open")
+        elif choice == "2":
+            print("L Gamer")
+            running = False
+
+
+        # option = input("[Choice] > ").strip()
+        # if option not in menu_actions:
+        #     input(f"Invalid choice '{option}'. Press Enter to continue.")
+        #     continue
+
+        # menu_actions[option]()
 
 if __name__ == "__main__":
     main_menu()

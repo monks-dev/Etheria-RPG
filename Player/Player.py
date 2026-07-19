@@ -1,8 +1,9 @@
-from Inventory import Inventory
-from Equipment import Equipment, EquipmentSlot
-from Weapon import Weapon
-from Shield import Shield
-from Armour import Armour
+from Player.Inventory import Inventory
+from Player.Equipment import Equipment, EquipmentSlot
+
+from Items.Weapon import Weapon
+from Items.Shield import Shield
+from Items.Armour import Armour
 
 class Player:
     def __init__(self, name: str):

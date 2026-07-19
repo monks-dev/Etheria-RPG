@@ -1,4 +1,4 @@
-from Item import Item
+from Items.Item import Item
 
 class Inventory():
     def __init__(self):

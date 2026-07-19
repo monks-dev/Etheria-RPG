@@ -1,4 +1,4 @@
-from Item import Item
+from Items.Item import Item
 
 class Consumable(Item):
     def __init__(self, name: str, description: str, value: int, health_on_use: int):

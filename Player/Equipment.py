@@ -1,6 +1,6 @@
-from Weapon import Weapon
-from Shield import Shield
-from Armour import Armour
+from Items.Weapon import Weapon
+from Items.Shield import Shield
+from Items.Armour import Armour
 from enum import Enum, auto
 
 class EquipmentSlot(Enum):
